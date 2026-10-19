@@ -298,9 +298,45 @@ Halaman rute Jakarta–Yogyakarta dan Yogyakarta–Jakarta menjelaskan fasilitas
 4. Bayar melalui metode pembayaran yang tersedia.
 5. E-ticket dikirim melalui email atau dapat dilihat dari aplikasi.
 
-### Batasan informasi rute
+### Detail Titik Per Rute
+ **Jakarta**
+ - Bekasi Timur
+ - Cikarang
+ - Jatiasih
+ - Jatijajar
+ - Jatiwarna
+ - Kalideres
+ - Kampung Rambutan
+ - Pondok Cabe
+ - Pulo Gebang / Pulogebang
+ - Pondok Pinang
+ - Tanjung Priok
+ - Poris
+ - Pasar Rebo
 
-Halaman rute memuat heading untuk titik keberangkatan dan titik tiba, tetapi daftar lokasinya tidak muncul pada data halaman yang berhasil ditarik. Jadwal, jam keberangkatan, tarif, durasi perjalanan, ketersediaan kursi, dan terminal/agen spesifik harus diperiksa langsung pada pencarian reservasi website/aplikasi.
+**Yogyakarta**
+ - Bendo
+ - Bawen
+ - Boyolali
+ - Banyumanik
+ - Dongkelan
+ - Delanggu
+ - Gamping
+ - Giwangan
+ - Jombor
+ - Klaten
+ - Kartasura
+ - Karangwuni
+ - Prambanan
+ - Salatiga
+ - Sragen
+ - Tirtonadi
+
+**Malang**
+ - Arjosari
+ - Medaeng / Surabaya
+ - Lawang
+ - Pandaan
 
 ---
 

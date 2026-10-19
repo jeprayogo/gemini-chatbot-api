@@ -12,6 +12,7 @@ const ai = new GoogleGenAI({
 });
 
 const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
+const GEMINI_FALLBACK_MODEL = 'gemini-3.6-flash';
 const MAX_TOTAL_FILE_SIZE = 18 * 1024 * 1024;
 const supportedMimeTypes = new Set([
   'image/jpeg',
@@ -147,14 +148,35 @@ app.post('/api/chat', parseChatUploads, async (req, res) => {
       ? `${unicornKnowledgeBase}\n\n---\nINSTRUKSI TAMBAHAN (OVERRIDE):\n${systemInstruction.trim()}`
       : unicornKnowledgeBase;
 
-    const response = await ai.models.generateContent({
+    const request = {
       model: GEMINI_MODEL,
       contents,
       config: {
         temperature: 0.1,
         systemInstruction: finalSystemInstruction,
       },
-    });
+    };
+
+    let response;
+    try {
+      response = await ai.models.generateContent(request);
+    } catch (error) {
+      if (
+        GEMINI_MODEL !== 'gemini-3.8-flash'
+        || !(error instanceof Error)
+        || error.status !== 503
+      ) {
+        throw error;
+      }
+
+      console.warn(
+        `Model ${GEMINI_MODEL} sedang tidak tersedia (503); mencoba ${GEMINI_FALLBACK_MODEL}.`,
+      );
+      response = await ai.models.generateContent({
+        ...request,
+        model: GEMINI_FALLBACK_MODEL,
+      });
+    }
 
     return res.status(200).json({ response: response.text });
   } catch (error) {
